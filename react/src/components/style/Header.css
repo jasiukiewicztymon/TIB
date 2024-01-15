@@ -1,0 +1,38 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  user-select: none;
+  padding: 10px;
+  width: 100%; 
+}
+#controlButtons {
+  display: flex;
+  gap: 5px;
+}
+#controlButtons button {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 100%;
+}
+#controlButtons button:first-child span {
+  transform: translateY(-25%);
+}
+.movable {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h1 b {
+  font-weight: bold;
+}
+#workspaces {
+
+}
