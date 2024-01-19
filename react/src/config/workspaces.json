@@ -1,5 +1,14 @@
 {
-  "personal": {
-    "name": "Espace de travail personel"
-  }
+  "workspaces": [
+    {
+      "name": "default",
+      "color": "#210200",
+      "background": "#ff1100"
+    },
+    {
+      "name": "math",
+      "color": "#050f1c",
+      "background": "#3b8cff"
+    }
+  ]
 }

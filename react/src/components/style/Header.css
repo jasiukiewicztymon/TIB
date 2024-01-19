@@ -5,7 +5,11 @@ header {
   gap: 20px;
   user-select: none;
   padding: 10px;
+  padding-top: 5px;
   width: 100%; 
+}
+header.scrollable #controlButtons, header.scrollable > div:first-child {
+  transform: translateY(-6px);
 }
 #controlButtons {
   display: flex;
@@ -18,6 +22,7 @@ header {
   justify-content: center;
   align-items: center;
   line-height: 100%;
+  cursor: pointer;
 }
 #controlButtons button:first-child span {
   transform: translateY(-25%);
@@ -34,5 +39,49 @@ h1 b {
   font-weight: bold;
 }
 #workspaces {
-
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 5px;
+  padding-top: 10px;
+  transform: translateY(-5px);
+  border-radius: 0 0 5px 5px;
+  background: #f0f0f0;
+  width: calc(100% - 200px);
+  max-width: calc(100% - 200px);
+  overflow-y: auto;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#workspaces::-webkit-scrollbar {
+  height: 7px;
+}
+#workspaces::-webkit-scrollbar-thumb {
+  background: #dfdede;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0; 
+}
+#workspaces button {
+  border: none;
+  padding: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+  background: red;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#workspaces button:last-child {
+  background: #dfdede;  
+}
+#workspaces button:last-child span {
+  transform: translateY(2px);
+}
+#workspaces > div {
+  display: flex;
+  gap: 10px;
+}
+#workspaces > div * {
+  font-size: 18px;
+}
+#workspaces > button * {
+  font-size: 20px;
 }

@@ -1,14 +1,12 @@
 import "./style/Header.css";
 import 'material-icons/iconfont/material-icons.css';
 
+import config from '../config/workspaces.json'
 import { atom, useAtom } from 'jotai'
 
 const fullscreenAtom = atom(false);
-const workspacesAtom = atom([
-{
-  name: 'default'
-}
-]);
+const workspacesAtom = atom(config.workspaces);
+
 const Header = () => {
   const [getFullscreen, setFullScreen] = useAtom(fullscreenAtom);
   const [getWorkspaces, setWorkspaces] = useAtom(workspacesAtom);
@@ -20,17 +18,18 @@ const Header = () => {
     setFullScreen(!getFullscreen)
   };  
 
+  window.electronAPI.receive("fromSystem", (e, data) => {
+    setFullScreen(data);
+  });
+
   return <header>
     <div class="movable">
       <h1><b>CPNE</b><span>/</span><i>Workspaces</i></h1>
     </div>
     <div id="workspaces">
       <div>
-        {Array.from(getWorkspaces).forEach(el => {
-          <i>p</i>
-        })}
-        {getWorkspaces.forEach(el => {
-          <button>{el.name} o</button>
+        {getWorkspaces.map(el => {
+          return <button id={`workspace-${el.name}`} style={{ color: el.color, backgroundColor: el.background }}>{el.name}</button>
         })}
       </div>
       <button><span class="material-icons">add</span></button>
