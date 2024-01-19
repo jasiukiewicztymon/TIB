@@ -5,7 +5,14 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('electronAPI', {
   minimizeWindow: () => ipcRenderer.send('control-minimize'),
   fullscreenWindow: () => ipcRenderer.send('control-fullscreen'),
-  closeWindow: () => ipcRenderer.send('control-close')
+  closeWindow: () => ipcRenderer.send('control-close'),
+  receive: (channel, func) => {
+    let validChannels = ["fromSystem"];
+    if (validChannels.includes(channel)) {
+        // Deliberately strip event as it includes `sender` 
+        ipcRenderer.on(channel, (event, ...args) => func(event, ...args));
+    }
+  }
 })
 
 /*window.addEventListener('DOMContentLoaded', () => {

@@ -48,6 +48,16 @@ const createWindow = () => {
   //mainWindow.loadFile("src/index.html");
   mainWindow.loadURL("http://localhost:3000")
 
+  // F11 fullscreen management
+  mainWindow.on('enter-full-screen', () => {
+    mainWindow.webContents.send('fromSystem', true)
+    // console.log('enter')
+  })
+  mainWindow.on('leave-full-screen', () => {
+    mainWindow.webContents.send('fromSystem', false)
+    // console.log('leave')
+  })
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 };
