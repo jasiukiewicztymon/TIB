@@ -1,0 +1,14 @@
+#mainBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+  width: 100vw;
+  padding: 7px;
+  padding-top: 0px;
+}
+#boxing {
+  padding: 10px; 
+  height: calc(100vh - 68px);
+}

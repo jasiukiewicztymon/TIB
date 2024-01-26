@@ -1,0 +1,58 @@
+{
+  "workspaces": [
+    {
+      "name": "default",
+      "color": "#210200",
+      "background": "#ff1100",
+      "apps": [
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "cookie": ""
+        },
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "cookie": ""
+        },
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "cookie": ""
+        },
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "cookie": ""
+        },
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "cookie": ""
+        },
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "cookie": ""
+        },
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "cookie": ""
+        }
+      ]
+    },
+    {
+      "name": "math",
+      "color": "#050f1c",
+      "background": "#3b8cff"
+    }
+  ]
+}
