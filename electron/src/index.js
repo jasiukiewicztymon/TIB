@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, session, BrowserView } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -6,7 +6,20 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+/*
+app.commandLine.appendSwitch('auth-server-whitelist', "*");
+app.commandLine.appendSwitch('enable-ntlm-v2', 'true');
+app.commandLine.appendSwitch('try-supported-channel-layouts');
+
+const disabledFeatures = app.commandLine.hasSwitch('disable-features') ? app.commandLine.getSwitchValue('disable-features').split(',') : ['HardwareMediaKeyHandling'];
+if (!disabledFeatures.includes('HardwareMediaKeyHandling')) disabledFeatures.push('HardwareMediaKeyHandling');
+app.commandLine.appendSwitch('disable-features', disabledFeatures.join(','));*/
+
 const createWindow = () => {
+  (async () => {
+    await session.defaultSession.clearStorageData();
+  })()
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -15,7 +28,11 @@ const createWindow = () => {
     minHeight: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      webviewTag: true
+      webviewTag: true,
+      allowpopups: true,
+      sandbox: false,
+      plugins: true,
+      contextIsolation: true
     },
     frame: false
   });
@@ -46,7 +63,10 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   //mainWindow.loadFile("src/index.html");
-  mainWindow.loadURL("http://localhost:3000")
+  mainWindow.loadURL("http://localhost:3000", {
+    userAgent:
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36',
+  })
 
   // F11 fullscreen management
   mainWindow.on('enter-full-screen', () => {
@@ -59,7 +79,7 @@ const createWindow = () => {
   })
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+   mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
