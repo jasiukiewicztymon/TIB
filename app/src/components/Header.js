@@ -30,26 +30,26 @@ const Header = (props) => {
   }
 
   return <header>
-    <div class="movable">
+    <div className="movable">
       <h1><b>CPNE</b><span>/</span><i>Workspaces</i></h1>
     </div>
     <div id="workspaces">
       <div>
         {getWorkspaces.map(el => {
-          return <button id={`workspace-${el.name}`} style={{ color: el.color, backgroundColor: el.background }}>{el.name}</button>
+          return <button key={el.name} id={`workspace-${el.name}`} style={{ color: el.color, backgroundColor: el.background }}>{el.name}</button>
         })}
       </div>
-      <button><span class="material-icons" onClick={addWorkspace}>add</span></button>
+      <button><span className="material-icons" onClick={addWorkspace}>add</span></button>
     </div>
     <div id="controlButtons">
       <button data-electron-control="control-minimize" onClick={() => { window.electronAPI.minimizeWindow(); }}>
-        <span class="material-icons">minimize</span>
+        <span className="material-icons">minimize</span>
       </button>
       <button data-electron-control="control-fullscreen" onClick={fullscreenWindow}>
-        <span class="material-icons">{getFullscreen ? 'fullscreen_exit' : 'fullscreen'}</span>
+        <span className="material-icons">{getFullscreen ? 'fullscreen_exit' : 'fullscreen'}</span>
       </button>
       <button data-electron-control="control-close" onClick={() => { window.electronAPI.closeWindow(); }}>
-        <span class="material-icons">close</span>
+        <span className="material-icons">close</span>
       </button>
     </div>
   </header>

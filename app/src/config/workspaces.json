@@ -4,44 +4,52 @@
       "name": "default",
       "color": "#210200",
       "background": "#ff1100",
+      "default": "",
       "apps": [
         {
+          "id": 1,
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "auth": true,
+          "type": "webapp"
+        },
+        {
+          "id": 2,
           "name": "teams",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
           "auth": true,
           "cookie": ""
         },
         {
+          "id": 3,
           "name": "teams",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
           "auth": true,
           "cookie": ""
         },
         {
+          "id": 4,
           "name": "teams",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
           "auth": true,
           "cookie": ""
         },
         {
+          "id": 5,
           "name": "teams",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
           "auth": true,
           "cookie": ""
         },
         {
+          "id": 6,
           "name": "teams",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
           "auth": true,
           "cookie": ""
         },
         {
-          "name": "teams",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "cookie": ""
-        },
-        {
+          "id": 7,
           "name": "teams",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
           "auth": true,

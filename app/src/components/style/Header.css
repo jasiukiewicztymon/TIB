@@ -72,7 +72,7 @@ h1 b {
   cursor: pointer;
 }
 #workspaces button:last-child {
-  background: #dfdede;  
+  background: #e4e4e4;  
 }
 #workspaces button:last-child span {
   transform: translateY(2px);
