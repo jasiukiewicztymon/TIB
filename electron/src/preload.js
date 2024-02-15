@@ -12,6 +12,34 @@ contextBridge.exposeInMainWorld('electronAPI', {
         // Deliberately strip event as it includes `sender` 
         ipcRenderer.on(channel, (event, ...args) => func(event, ...args));
     }
+  },
+
+  openWebview: (url) => {
+    console.log(url)
+    ipcRenderer.send('open-webview', url);
+  },
+
+  sendResizeWebview: (sizes) => {
+    ipcRenderer.send('resize-webview', sizes);
+  },
+  detachCurrentApp: () => {
+    ipcRenderer.send('detach-app');
+  },
+  closeCurrentApp: () => {
+    ipcRenderer.send('close-app');
+  },
+  refreshCurrentApp: () => {
+    ipcRenderer.send('refresh-app');
+  },
+  openApp: (workspace, app) => {
+    ipcRenderer.send('open-app', workspace, app)
+  },
+  closeAllApp: () => {
+    ipcRenderer.send('closeall-app')
+  },
+
+  sendConfig: (config) => {
+    ipcRenderer.send('config', config)
   }
 })
 
