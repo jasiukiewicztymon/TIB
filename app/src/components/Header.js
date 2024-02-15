@@ -9,6 +9,8 @@ const fullscreenAtom = atom(false);
 const Header = (props) => {
   const [getFullscreen, setFullScreen] = useAtom(fullscreenAtom);
   const [getWorkspaces, setWorkspaces] = props.workspaces;
+  const [getWorkspaceIndex, setWorkspaceIndex] = props.workspaceIndex;
+
 
   const fullscreenWindow = () => {
     window.electronAPI.fullscreenWindow()
@@ -21,12 +23,26 @@ const Header = (props) => {
     });
   }, []);
 
+  useEffect(() => {
+    window.electronAPI.closeAllApp();
+  }, [getWorkspaceIndex])
+
   const addWorkspace = () => {
+    let i = 0;
+
+    for (let j in getWorkspaces)
+      if (getWorkspaces[j].name.startsWith('default')) i++;
+
     setWorkspaces([...getWorkspaces, {
-      "name": "default",
+      "name": `default${i == 0?"": ` ${i}`}`,
       "color": "#210200",
-      "background": "#ff1100"
+      "background": "#ff1100",
+      "default": "https://google.ch/",
+      "apps": [
+      ]
     }])
+
+    setWorkspaceIndex(getWorkspaces.length - 1)
   }
 
   return <header>
@@ -35,8 +51,8 @@ const Header = (props) => {
     </div>
     <div id="workspaces">
       <div>
-        {getWorkspaces.map(el => {
-          return <button key={el.name} id={`workspace-${el.name}`} style={{ color: el.color, backgroundColor: el.background }}>{el.name}</button>
+        {getWorkspaces.map((el, key) => {
+          return <button key={el.name} id={`workspace-${el.name}`} onClick={() => { setWorkspaceIndex(key) }} style={{ color: el.color, backgroundColor: el.background }}>{el.name}</button>
         })}
       </div>
       <button><span className="material-icons" onClick={addWorkspace}>add</span></button>

@@ -4,63 +4,37 @@
       "name": "default",
       "color": "#210200",
       "background": "#ff1100",
-      "default": "",
+      "default": "https://google.ch/",
       "apps": [
         {
-          "id": 1,
           "name": "teams",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "type": "webapp"
+          "src": "https://teams.microsoft.com/l/channel/19%3aOgB-n1PxBBZyoSo7nzRuTL-xw1gA_hICEAlUNqkco8A1%40thread.tacv2/G%25C3%25A9n%25C3%25A9ral?groupId=d8cec53a-edb6-41a7-a582-780b7f626c42&tenantId=52f13af1-cfa4-4f8e-84a1-a118ec05c120"
         },
         {
-          "id": 2,
-          "name": "teams",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "cookie": ""
-        },
-        {
-          "id": 3,
-          "name": "teams",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "cookie": ""
-        },
-        {
-          "id": 4,
-          "name": "teams",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "cookie": ""
-        },
-        {
-          "id": 5,
-          "name": "teams",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "cookie": ""
-        },
-        {
-          "id": 6,
-          "name": "teams",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "cookie": ""
-        },
-        {
-          "id": 7,
-          "name": "teams",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
-          "auth": true,
-          "cookie": ""
+          "name": "moodle",
+          "icon": "https://store-images.s-microsoft.com/image/apps.47156.14141525700856349.6cb32918-57b4-48f6-a08a-1a68b084ceb7.f58be292-bfeb-4eed-ae02-6a0c91032b0c?h=464",
+          "src": "https://learn.s2.rpn.ch/course/view.php?id=6268"
         }
       ]
     },
     {
       "name": "math",
       "color": "#050f1c",
-      "background": "#3b8cff"
+      "background": "#3b8cff",
+      "default": "https://youtube.com/",
+      "apps": [
+        {
+          "name": "teams",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "src": "https://teams.microsoft.com/l/channel/19%3aOgB-n1PxBBZyoSo7nzRuTL-xw1gA_hICEAlUNqkco8A1%40thread.tacv2/G%25C3%25A9n%25C3%25A9ral?groupId=d8cec53a-edb6-41a7-a582-780b7f626c42&tenantId=52f13af1-cfa4-4f8e-84a1-a118ec05c120"
+        },
+        {
+          "name": "teams1",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+          "src": "https://teams.microsoft.com/l/channel/19%3aOgB-n1PxBBZyoSo7nzRuTL-xw1gA_hICEAlUNqkco8A1%40thread.tacv2/G%25C3%25A9n%25C3%25A9ral?groupId=d8cec53a-edb6-41a7-a582-780b7f626c42&tenantId=52f13af1-cfa4-4f8e-84a1-a118ec05c120"
+        }
+      ]
     }
   ]
 }
