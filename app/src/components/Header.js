@@ -33,16 +33,17 @@ const Header = (props) => {
     for (let j in getWorkspaces)
       if (getWorkspaces[j].name.startsWith('default')) i++;
 
+    let s = getWorkspaces.length
+
     setWorkspaces([...getWorkspaces, {
       "name": `default${i == 0?"": ` ${i}`}`,
-      "color": "#210200",
-      "background": "#ff1100",
+      "background": "#8338ec",
       "default": "https://google.ch/",
       "apps": [
       ]
     }])
 
-    setWorkspaceIndex(getWorkspaces.length - 1)
+    setWorkspaceIndex(s)
   }
 
   return <header>
@@ -52,7 +53,7 @@ const Header = (props) => {
     <div id="workspaces">
       <div>
         {getWorkspaces.map((el, key) => {
-          return <button key={el.name} id={`workspace-${el.name}`} onClick={() => { setWorkspaceIndex(key) }} style={{ color: el.color, backgroundColor: el.background }}>{el.name}</button>
+          return <button key={el.name} id={`workspace-${el.name}`} onClick={() => { setWorkspaceIndex(key) }} style={{ backgroundColor: el.background }}>{el.name}</button>
         })}
       </div>
       <button><span className="material-icons" onClick={addWorkspace}>add</span></button>

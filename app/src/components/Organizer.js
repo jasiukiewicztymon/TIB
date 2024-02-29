@@ -14,6 +14,11 @@ const Organizer = (props) => {
   const webview = useRef(null);
 
   useEffect(() => {
+    setWebviewDisply(false);
+    window.electronAPI.closeAllApp();
+  }, [getWorkspaceIndex])
+
+  useEffect(() => {
     window.electronAPI.sendResizeWebview({
       x: webview.current.getBoundingClientRect().x,
       y: webview.current.getBoundingClientRect().y,
@@ -33,21 +38,17 @@ const Organizer = (props) => {
 
   return <main id={style.main}>
     <div id={style.menu}>
-      <h2>{getWorkspaces[getWorkspaceIndex].name}</h2>
       <div id={style.manager}>
-        <button>Settings <span className="material-icons">settings</span></button>
-        <button>Share <span className="material-icons">ios_share</span></button>
-        <button>Export <span className="material-icons">download</span></button>
+        <img src="/settings.png" height={55} width={55} />
       </div>
-      <h3>Apps</h3>
       <div id={style.apps}>
         {getWorkspaces[getWorkspaceIndex].apps.map((el, key) => {
           return (
-            <button key={key} onClick={() => {
+            <img key={key} src={el.icon} height={55} width={55} onClick={() => {
               // console.log(getWorkspaceIndex, key);
               window.electronAPI.openApp(getWorkspaceIndex, key);
               setWebviewDisply(true);
-            }}><img src={el.icon} height={40} />{el.name}</button>
+            }} />
           )
         })}
       </div>
