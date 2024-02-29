@@ -7,7 +7,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const TEST = true
+const TEST = false
 const BROWSERVIEWS = [];
 let BROWSERVIEWSREFS = {};
 let LASTBROSWERVIEW = null;
@@ -32,11 +32,6 @@ if (!disabledFeatures.includes('HardwareMediaKeyHandling')) disabledFeatures.pus
 app.commandLine.appendSwitch('disable-features', disabledFeatures.join(','));*/
 
 const createWindow = () => {
-  (async () => {
-    if (TEST) await session.defaultSession.clearStorageData();
-  })()
-
-  // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -48,11 +43,18 @@ const createWindow = () => {
       allowpopups: true,
       sandbox: false,
       plugins: true,
-      contextIsolation: true
+      contextIsolation: true,
+      partition: "persist:point"
     },
     frame: false
   });
+  
+  (async () => {
+    //await mainWindow.webContents.session.clearCache();
+    await mainWindow.webContents.session.clearStorageData();
+  })()
 
+  // Create the browser window.
   // WindowConrol... functions
   // Minimize
   const windowControlMinimize = () => {
@@ -94,11 +96,12 @@ const createWindow = () => {
       autoHideMenuBar: true,
       webPreferences: {
         allowpopups: true,
-        contextIsolation: true
+        contextIsolation: true,
+        partition: "persist:point"
       },
       darkTheme: false,
       // partage de session du parent
-      session: mainWindow.webContents.session
+      //session: mainWindow.webContents.session
     });
     win.loadURL(url, {
       userAgent:
@@ -116,11 +119,21 @@ const createWindow = () => {
       autoHideMenuBar: true,
       webPreferences: {
         allowpopups: true,
-        contextIsolation: true
+        contextIsolation: true,
+        partition: "persist:point"
       },
       darkTheme: false,
       roundedCorners: true,
     });
+
+    //hereee
+    let i = BROWSERVIEWS.indexOf(LASTBROSWERVIEW);
+    BROWSERVIEWS.splice(i, 1);
+
+    let j = Object.values(BROWSERVIEWSREFS).indexOf(i);
+
+    BROWSERVIEWS.push(win);
+    BROWSERVIEWSREFS[`detached-${BROWSERVIEWS.length}-${Object.keys(BROWSERVIEWSREFS)[j]}`] = BROWSERVIEWS.length - 1;
 
     win.loadURL(LASTBROSWERVIEW.webContents.getURL(), {
       userAgent:
@@ -178,7 +191,8 @@ const createWindow = () => {
       autoHideMenuBar: true,
       webPreferences: {
         allowpopups: true,
-        contextIsolation: true
+        contextIsolation: true,
+        partition: "persist:point"
       },
       titleBarStyle: 'hidden',
       parent: mainWindow,
@@ -222,7 +236,7 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   //mainWindow.loadFile("src/index.html");
-  mainWindow.loadURL("http://localhost:3000", {
+  mainWindow.loadURL("http://localhost:3001", {
     userAgent:
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36',
   }) 
