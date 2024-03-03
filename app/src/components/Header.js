@@ -1,15 +1,19 @@
-import "./style/Header.css";
+'use client'
+
+import styles from "./style/Header.module.css";
 import 'material-icons/iconfont/material-icons.css';
 
-import { atom, useAtom } from 'jotai'
+import { useAtom } from 'jotai'
 import { useEffect } from "react";
 
-const fullscreenAtom = atom(false);
+import { fullscreenAtom, settingsIsOpenAtom, webviewDisplayAtom, workspacesAtom, workspaceIndexAtom } from '@/stores/JotaiStores'
 
 const Header = (props) => {
   const [getFullscreen, setFullScreen] = useAtom(fullscreenAtom);
-  const [getWorkspaces, setWorkspaces] = props.workspaces;
-  const [getWorkspaceIndex, setWorkspaceIndex] = props.workspaceIndex;
+  const [getsettingsIsOpen, setSettingsIsOpen] = useAtom(settingsIsOpenAtom);
+  const [getWebviewDisplay, setWebviewDisplay] = useAtom(webviewDisplayAtom);
+  const [getWorkspaceIndex, setWorkspaceIndex] = useAtom(workspaceIndexAtom);
+  const [getWorkspaces, setWorkspaces] = useAtom(workspacesAtom);
 
 
   const fullscreenWindow = () => {
@@ -23,49 +27,58 @@ const Header = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    window.electronAPI.closeAllApp();
-  }, [getWorkspaceIndex])
-
   const addWorkspace = () => {
-    let i = 0;
-
-    for (let j in getWorkspaces)
-      if (getWorkspaces[j].name.startsWith('default')) i++;
-
     let s = getWorkspaces.length
 
     setWorkspaces([...getWorkspaces, {
-      "name": `default${i == 0?"": ` ${i}`}`,
+      "name": `default${s == 0?"": ` ${s}`}`,
       "background": "#8338ec",
-      "default": "https://google.ch/",
+      "default": null,
       "apps": [
       ]
     }])
 
+    // close everything
+    setSettingsIsOpen(false);
+    setWebviewDisplay(false);
+    window.electronAPI.closeAllApp();
+
+    window.electronAPI.sendConfig({
+      workspaces: getWorkspaces
+    });
+
     setWorkspaceIndex(s)
+    console.log('create')
   }
 
-  return <header>
-    <div className="movable">
+  return <header id={styles.header}>
+    <div className={styles.movable}>
       <h1><b>CPNE</b><span>/</span><i>Workspaces</i></h1>
     </div>
-    <div id="workspaces">
+    <div id={styles.workspaces}>
       <div>
         {getWorkspaces.map((el, key) => {
-          return <button key={el.name} id={`workspace-${el.name}`} onClick={() => { setWorkspaceIndex(key) }} style={{ backgroundColor: el.background }}>{el.name}</button>
+          return <button key={el.name} id={styles[`workspace-${el.name}`]} onClick={() => { 
+            setSettingsIsOpen(false);
+            setWebviewDisplay(false);
+            window.electronAPI.closeAllApp();
+
+            setWorkspaceIndex(key)
+            console.log('change')
+
+          }} style={{ backgroundColor: el.background }}>{el.name}</button>
         })}
       </div>
       <button><span className="material-icons" onClick={addWorkspace}>add</span></button>
     </div>
-    <div id="controlButtons">
-      <button data-electron-control="control-minimize" onClick={() => { window.electronAPI.minimizeWindow(); }}>
+    <div id={styles.controlButtons}>
+      <button onClick={() => { window.electronAPI.minimizeWindow(); }}>
         <span className="material-icons">minimize</span>
       </button>
-      <button data-electron-control="control-fullscreen" onClick={fullscreenWindow}>
+      <button onClick={fullscreenWindow}>
         <span className="material-icons">{getFullscreen ? 'fullscreen_exit' : 'fullscreen'}</span>
       </button>
-      <button data-electron-control="control-close" onClick={() => { window.electronAPI.closeWindow(); }}>
+      <button onClick={() => { window.electronAPI.closeWindow(); }}>
         <span className="material-icons">close</span>
       </button>
     </div>

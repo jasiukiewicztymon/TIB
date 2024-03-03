@@ -1,0 +1,91 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+  user-select: none;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%; 
+  -webkit-app-region: drag;
+}
+#controlButtons {
+  display: flex;
+  gap: 10px;
+  -webkit-app-region: no-drag;
+}
+#controlButtons button {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 100%;
+  cursor: pointer;
+}
+#controlButtons button:first-child span {
+  transform: translateY(-25%);
+}
+.movable {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+#header h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+#header h1 b {
+  font-weight: bold;
+}
+#workspaces {
+  -webkit-app-region: no-drag;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 5px;
+  padding-top: 12px;
+  transform: translateY(-5px);
+  border-radius: 0 0 5px 5px;
+  background: #f4f4f4;
+  width: calc(100% - 200px);
+  max-width: calc(100% - 200px);
+  overflow-x: scroll;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  max-width: 700px;
+}
+#workspaces::-webkit-scrollbar {
+  height: 7px;
+}
+#workspaces::-webkit-scrollbar-thumb {
+  background: #dfdede;
+  border-radius: 5px;
+  border: 1px solid #f4f4f4; 
+}
+#workspaces button {
+  border: none;
+  padding: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+  background: red;
+  color: #000000e3;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space:nowrap;
+}
+#workspaces button:last-child {
+  background: #e4e4e4;  
+}
+#workspaces button:last-child span {
+  transform: translateY(2px);
+}
+#workspaces > div {
+  display: flex;
+  gap: 10px;
+}
+#workspaces > div * {
+  font-size: 18px;
+}
+#workspaces > button * {
+  font-size: 20px;
+}
